@@ -7,50 +7,15 @@
 #include<qjsonobject.h>
 #include<qjsonvalue.h>
 #include<qfile.h>
+#include<TimeofIssue.h>
 
-
-class TimeofIssue{//事件的时间信息
-private:
-    int m_year;//事件开始的年月日时分
-    int m_month;
-    int m_date;
-    int m_hour;
-    int m_min;
-
-public:
-    TimeofIssue(int year,int month,int date,int hour,int min);
-
-    //设置年月日时分
-    void setYear(int year);
-    void setMonth(int month);
-    void setDate(int date);
-    void setHour(int hour);
-    void setMin(int min);
-
-    //获取年月日时分
-    int getYear();
-    int getMonth();
-    int getDate();
-    int getHour();
-    int getMin();
-};
-
-// class TimeofIssue_lasting:public TimeofIssue{//持续一段时间的事件的时间信息
-// public:
-//     int ed_year;//事件结束的年月日时分
-//     int ed_month;
-//     int ed_date;
-//     int ed_hour;
-//     int ed_min;
-//     int last_time;//持续时间
-//     TimeofIssue_lasting(int styear,int stmonth,int stdate,int sthour,int stmin,int edyear,int edmonth,int eddate,int edhour,int edmin):TimeofIssue(styear,stmonth,stdate,sthour,stmin);
-// };
 
 class Issue{//事件基类
 protected:
+    long long ID;
     string m_Name;//事件标题
     TimeofIssue* m_startTime;//事件开始的时间信息
-    string m_Typename;//事件类型：时间点事件，持续事件，习惯事件，
+    string m_Typename;//事件类型：时间点事件，持续事件，习惯事件，ddl事件
     string m_Discription;//事件描述
     string m_Position;//事件地点
     int m_Repeat;//重复事件的时间间隔，以天为单位，<=0表示不重复
@@ -85,6 +50,8 @@ public:
     int getDate();
     int getHour();
     int getMin();
+
+    friend bool operator<(const Issue& it1,const Issue& it2);
 };
 
 class Issue_point:public Issue{//时间点事件
