@@ -2,12 +2,9 @@
 #define CLASSES_OF_ISSUE_H
 
 #include<vector>
-#include<qjsonarray.h>
-#include<qjsondocument.h>
-#include<qjsonobject.h>
-#include<qjsonvalue.h>
-#include<qfile.h>
+#include<cstring>
 #include<TimeofIssue.h>
+using namespace std;
 
 
 class Issue{//事件基类
@@ -23,7 +20,7 @@ protected:
 
 public:
     Issue();
-    Issue(string name,string discription,string position,int repeat,TimeofIssue* st_time);
+    Issue(string name,string discription,string position,int repeat,TimeofIssue* st_time,int type);
     virtual ~Issue();
 
     string getName();//获取事件标题
@@ -34,8 +31,8 @@ public:
     int getRepeat();//获取事件重复的间隔时间（天数），<=0表示不重复
     virtual int getLastingtime();//获取事件持续的时间，只有持续事件有
 
-    void examineDate();//检查是否过期
-    bool isPasted();//返回是否过期
+    virtual void examineDate();//检查是否到时
+    bool isPasted();//返回是否到时
 
     //设置（开始）年月日时分
     void setYear(int year);
@@ -52,6 +49,10 @@ public:
     int getMin();
 
     friend bool operator<(const Issue& it1,const Issue& it2);
+
+    virtual void fulfilled();
+    virtual int getall_days();
+    virtual int getfulfilled_days();
 };
 
 class Issue_point:public Issue{//时间点事件
@@ -90,7 +91,11 @@ private:
     int fulfilled_days;//完成习惯的天数
 
 public:
-    Issue_habit(string name,string discription,string position,int repeat,TimeofIssue* st_time);
+    Issue_habit(string name, string discription, string position, int repeat, TimeofIssue* st_time);
+    void examineDate();
+    void fulfilled();
+    int getall_days();
+    int getfulfilled_days();
 };
 
 class Issue_task:public Issue{//ddl事件

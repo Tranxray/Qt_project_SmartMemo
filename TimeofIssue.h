@@ -1,6 +1,9 @@
 #ifndef TIMEOFISSUE_H
 #define TIMEOFISSUE_H
 
+#include<chrono>
+#include<ctime>
+
 
 class TimeofIssue{//事件的时间信息
 private:
@@ -12,7 +15,8 @@ private:
 
 public:
     TimeofIssue(int year,int month,int date);//创建具体到日期的时间对象
-    TimeofIssue(int year,int month,int date,int hour,int min);//创建具体到分钟的时间对象
+    TimeofIssue(int year, int month, int date, int hour, int min);//创建具体到分钟的时间对象
+    ~TimeofIssue();
 
     //设置年月日时分
     void setYear(int year);
@@ -35,6 +39,10 @@ public:
     friend bool operator<(const TimeofIssue& t1,const TimeofIssue& t2);
 };
 
+bool isLeap(int year);
+int dayOfYear(int year, int month, int day);
+void swap(int& num1, int& num2);
+
 //并不需要这个
 // class TimeofIssue_lasting:public TimeofIssue{//持续一段时间的事件的时间信息
 // public:
@@ -46,5 +54,7 @@ public:
 //     int last_time;//持续时间
 //     TimeofIssue_lasting(int styear,int stmonth,int stdate,int sthour,int stmin,int edyear,int edmonth,int eddate,int edhour,int edmin):TimeofIssue(styear,stmonth,stdate,sthour,stmin);
 // };
+
+TimeofIssue* getLocalTime();
 
 #endif // TIMEOFISSUE_H
