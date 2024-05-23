@@ -32,6 +32,24 @@ void swap(int& num1, int& num2)
     num2 = tmp;
 }
 
+TimeofIssue::TimeofIssue(int year, int month, int date){
+    m_year=year;
+    m_month=month;
+    m_date=date;
+    m_hour=0;
+    m_min=0;
+}
+
+TimeofIssue::TimeofIssue(int year, int month, int date, int hour, int min){
+    m_year=year;
+    m_month=month;
+    m_date=date;
+    m_hour=hour;
+    m_min=min;
+}
+
+TimeofIssue::~TimeofIssue(){}
+
 void TimeofIssue::setYear(int year){m_year=year;}
 void TimeofIssue::setMonth(int month){m_month=month;}
 void TimeofIssue::setDate(int date){m_date=date;}
@@ -39,11 +57,11 @@ void TimeofIssue::setHour(int hour){m_hour = hour;}
 void TimeofIssue::setMin(int min) { m_min = min; }
 int TimeofIssue::getYear() { return m_year; }
 int TimeofIssue::getMonth() { return m_month; }
-int TimeofIssue::getDate() { return m_year; }
+int TimeofIssue::getDate() { return m_date; }
 int TimeofIssue::getHour() { return m_hour; }
 int TimeofIssue::getMin() { return m_min; }
 
-bool TimeofIssue::judge_date_equal(const TimeofIssue& other)
+bool TimeofIssue::judge_date_equal(TimeofIssue& other)
 {
     return m_year == other.m_year && m_month == other.m_month && m_date == other.m_date;
 }

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include<issues_of_day.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,11 +17,12 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    IssueList* ilist;
 
 private slots:
-    void on_Settings_clicked();
 
-    void on_settingsButton_clicked();
+    void Open_Issue_of_Day();
+    void SettingsButton_clicked();
 
 private:
     Ui::MainWindow *ui;
