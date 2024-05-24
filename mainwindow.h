@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include"NewNote.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -18,11 +18,13 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_Settings_clicked();
 
     void on_settingsButton_clicked();
 
+    void on_Add_clicked();
+
 private:
     Ui::MainWindow *ui;
+    NewNote *newNote;
 };
 #endif // MAINWINDOW_H
