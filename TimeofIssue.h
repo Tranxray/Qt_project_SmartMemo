@@ -3,6 +3,7 @@
 
 #include<chrono>
 #include<ctime>
+#include<qdatetime.h>
 
 
 class TimeofIssue{//事件的时间信息
@@ -32,11 +33,15 @@ public:
     int getHour();
     int getMin();
 
-    bool judge_date_equal(const TimeofIssue& other);//判断是否是同一天
+    bool judge_date_equal(TimeofIssue& other);//判断是否是同一天
 
     int getDuration(const TimeofIssue& other);//计算两个时间相差的天数
 
     friend bool operator<(const TimeofIssue& t1,const TimeofIssue& t2);
+
+    QDate getQdate();
+
+    QDateTime getQdatetime();
 };
 
 bool isLeap(int year);

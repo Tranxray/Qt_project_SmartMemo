@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include<QDateEdit>
+#include<IssueList.h>
+#include<qlistwidget.h>
 
 namespace Ui {
 class Issues_of_Day;
@@ -13,12 +15,15 @@ class Issues_of_Day : public QDialog
     Q_OBJECT
 
 public:
-    explicit Issues_of_Day(QWidget *parent = nullptr);
+    explicit Issues_of_Day(QDate* date, QWidget *parent = nullptr,IssueList* il=NULL);
     ~Issues_of_Day();
+    IssueList* ilist;
 
 private slots:
     void Add_Issue();
-    void Close_window();
+    void Show_List();
+    void Modify_Issue(QListWidgetItem *item);
+    void Delete_Issue();
 
 private:
     Ui::Issues_of_Day *ui;

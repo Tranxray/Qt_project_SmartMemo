@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/add-.jpg</file>
+        <file>images/add.jpeg</file>
+        <file>images/calendar1.0.jpeg</file>
+        <file>images/down.jpeg</file>
+        <file>images/MainMenu1.0.jpeg</file>
+        <file>images/moon.jpg</file>
+        <file>images/settings1.0.jpeg</file>
+        <file>images/sun.jpeg</file>
+        <file>images/delete.jpeg</file>
+        <file>images/2dckb3sv.png</file>
+        <file>images/9amgxtlb.png</file>
+    </qresource>
+    <qresource prefix="/style">
+        <file>stylesheets/lightcolor.qss</file>
+        <file>stylesheets/deepcolor.qss</file>
+    </qresource>
+</RCC>
